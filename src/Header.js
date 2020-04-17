@@ -25,11 +25,6 @@ export function Header({ isLoggedIn, loginMsg, username, roles }) {
 							</NavLink>
 						</li>
 					)}
-					<li>
-						<NavLink activeClassName="active" to="/remote-servers">
-							Remote servers Settings.js?
-						</NavLink>
-					</li>
 				</React.Fragment>
 			)}
 			<li>

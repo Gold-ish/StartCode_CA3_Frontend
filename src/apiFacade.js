@@ -1,4 +1,4 @@
-const URL = "https://host.hangovergaming.dk/security";
+import { URLS } from "./Settings";
 
 function handleHttpErrors(res) {
 	if (!res.ok) {
@@ -29,7 +29,7 @@ function apiFacade() {
 			username: user,
 			password: password,
 		});
-		return fetch(URL + "/api/login", options)
+		return fetch(URLS.Login(), options)
 			.then(handleHttpErrors)
 			.then((res) => {
 				setToken(res.token);
@@ -40,24 +40,30 @@ function apiFacade() {
 	};
 	const fetchDataUser = () => {
 		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL + "/api/info/user", options).then(handleHttpErrors);
+		return fetch(URL.User(), options).then(handleHttpErrors);
 	};
 	const fetchDataAdmin = () => {
 		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL + "/api/info/admin", options).then(handleHttpErrors);
+		return fetch(URL, options).then(handleHttpErrors);
 	};
 	const fetchInfoData = () => {
 		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL + "/api/fetch", options).then(handleHttpErrors);
+		return fetch(URL, options).then(handleHttpErrors);
 	};
 	const fetchDog = () => {
 		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL + "/api/fetch/dogpic", options).then(handleHttpErrors);
+		return fetch(URL, options).then(handleHttpErrors);
 	};
 	const fetchCat = () => {
 		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL + "/api/fetch/catpic", options).then(handleHttpErrors);
+		return fetch(URL, options).then(handleHttpErrors);
 	};
+
+	const fetchData = (URL) => {
+		const options = makeOptions("GET", true); //True add's the token
+		return fetch(URL, options).then(handleHttpErrors);
+	};
+
 	const makeOptions = (method, addToken, body) => {
 		var opts = {
 			method: method,
@@ -86,6 +92,7 @@ function apiFacade() {
 		fetchInfoData,
 		fetchDog,
 		fetchCat,
+		fetchData,
 	};
 }
 const facade = apiFacade();

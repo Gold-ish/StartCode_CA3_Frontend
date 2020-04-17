@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import facade from "./apiFacade";
+import { URLS } from "./Settings";
 
 export function User() {
 	return (
@@ -28,7 +29,7 @@ function UserFetch() {
 function FetchingDog() {
 	const [dataFromServer, setDataFromServer] = useState("Loading...");
 	useEffect(() => {
-		facade.fetchDog().then((data) => setDataFromServer(data.url));
+		facade.fetchData(URLS.Dog()).then((data) => setDataFromServer(data.url));
 	}, []);
 	return <img src={dataFromServer} alt="dog" width="200" height="200" />;
 }

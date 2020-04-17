@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header } from "./Header";
 import { Home } from "./Home";
-import { RemoteServers } from "./RemoteServers";
 import { Login } from "./Login";
 import { User } from "./User";
 import { Admin } from "./Admin";
@@ -34,9 +33,6 @@ export default function App() {
 					</Route>
 					<Route exact path="/admin">
 						<Admin />
-					</Route>
-					<Route path="/remote-servers">
-						<RemoteServers />
 					</Route>
 					<Route path="/login-out">
 						<Login
