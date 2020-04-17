@@ -24,7 +24,7 @@ function apiFacade() {
 		localStorage.removeItem("jwtToken");
 	};
 
-	const login = (user, password) => {
+	const login = (user, password, setUsername, setRoles) => {
 		const options = makeOptions("POST", true, {
 			username: user,
 			password: password,
@@ -33,6 +33,9 @@ function apiFacade() {
 			.then(handleHttpErrors)
 			.then((res) => {
 				setToken(res.token);
+				setUsername(res.username);
+				setRoles(res.role);
+				console.log(res.role);
 			});
 	};
 	const fetchDataUser = () => {
@@ -42,6 +45,18 @@ function apiFacade() {
 	const fetchDataAdmin = () => {
 		const options = makeOptions("GET", true); //True add's the token
 		return fetch(URL + "/api/info/admin", options).then(handleHttpErrors);
+	};
+	const fetchInfoData = () => {
+		const options = makeOptions("GET", true); //True add's the token
+		return fetch(URL + "/api/fetch", options).then(handleHttpErrors);
+	};
+	const fetchDog = () => {
+		const options = makeOptions("GET", true); //True add's the token
+		return fetch(URL + "/api/fetch/dogpic", options).then(handleHttpErrors);
+	};
+	const fetchCat = () => {
+		const options = makeOptions("GET", true); //True add's the token
+		return fetch(URL + "/api/fetch/catpic", options).then(handleHttpErrors);
 	};
 	const makeOptions = (method, addToken, body) => {
 		var opts = {
@@ -68,6 +83,9 @@ function apiFacade() {
 		logout,
 		fetchDataUser,
 		fetchDataAdmin,
+		fetchInfoData,
+		fetchDog,
+		fetchCat,
 	};
 }
 const facade = apiFacade();

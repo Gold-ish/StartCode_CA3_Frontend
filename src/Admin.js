@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import facade from "./apiFacade";
 
 export function Admin() {
-	return <div>{AdminFetch()}</div>;
+	return (
+		<div>
+			{AdminFetch()}
+			{Fetching()}
+		</div>
+	);
 }
 
 function AdminFetch() {
@@ -16,4 +21,20 @@ function AdminFetch() {
 			<h3>{dataFromServer}</h3>
 		</div>
 	);
+}
+
+function Fetching() {
+	const [dataFromServer, setDataFromServer] = useState("Loading...");
+	useEffect(() => {
+		facade.fetchInfoData().then((data) => {
+			let returnData = "";
+			for (let key in data) {
+				returnData += key + ": " + data[key] + " \n";
+				console.log(key, data[key]);
+			}
+			setDataFromServer(returnData);
+			console.log(returnData);
+		});
+	}, []);
+	return <p>{dataFromServer}</p>;
 }

@@ -1,13 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import facade from "./apiFacade";
 
-export function Login({ isLoggedIn, loginMsg, setLoginStatus }) {
+export function Login({
+	isLoggedIn,
+	loginMsg,
+	setLoginStatus,
+	setUsername,
+	setRoles,
+}) {
 	const logout = () => {
 		facade.logout();
 		setLoginStatus(false);
+		setUsername("");
+		setRoles("");
 	};
 	const login = (user, pass) => {
-		facade.login(user, pass).then((res) => setLoginStatus(true));
+		facade.login(user, pass, setUsername, setRoles).then((res) => {
+			setLoginStatus(true);
+		});
 	};
 	return (
 		<div>

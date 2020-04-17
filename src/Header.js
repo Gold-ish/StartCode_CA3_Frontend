@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export function Header({ isLoggedIn, loginMsg }) {
+export function Header({ isLoggedIn, loginMsg, username, roles }) {
 	return (
 		<ul className="header">
 			<li>
@@ -11,19 +11,23 @@ export function Header({ isLoggedIn, loginMsg }) {
 			</li>
 			{isLoggedIn && (
 				<React.Fragment>
-					<li>
-						<NavLink activeClassName="active" to="/user">
-							User
-						</NavLink>
-					</li>
-					<li>
-						<NavLink activeClassName="active" to="/admin">
-							Admin
-						</NavLink>
-					</li>
+					{roles.includes("user") && (
+						<li>
+							<NavLink activeClassName="active" to="/user">
+								Cats & Dogs
+							</NavLink>
+						</li>
+					)}
+					{roles.includes("admin") && (
+						<li>
+							<NavLink activeClassName="active" to="/admin">
+								Super-Secret-Admin-stuff
+							</NavLink>
+						</li>
+					)}
 					<li>
 						<NavLink activeClassName="active" to="/remote-servers">
-							Remote servers
+							Remote servers Settings.js?
 						</NavLink>
 					</li>
 				</React.Fragment>
@@ -33,6 +37,15 @@ export function Header({ isLoggedIn, loginMsg }) {
 					{loginMsg}
 				</NavLink>
 			</li>
+			{isLoggedIn && (
+				<li>
+					<p>
+						User: {username}
+						{"  "}
+						Role: {roles}
+					</p>
+				</li>
+			)}
 		</ul>
 	);
 }

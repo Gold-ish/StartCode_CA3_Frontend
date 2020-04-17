@@ -13,12 +13,17 @@ export default function App() {
 	const setLoginStatus = (status) => {
 		setIsLoggedIn(status);
 	};
+	const [username, setUsername] = useState();
+	const [roles, setRoles] = useState();
+
 	return (
 		<Router>
 			<div className="App">
 				<Header
 					loginMsg={isLoggedIn ? "Logout" : "Login"}
 					isLoggedIn={isLoggedIn}
+					username={username}
+					roles={roles}
 				/>
 				<Switch>
 					<Route exact path="/">
@@ -38,6 +43,8 @@ export default function App() {
 							loginMsg={isLoggedIn ? "Logout" : "Login"}
 							isLoggedIn={isLoggedIn}
 							setLoginStatus={setLoginStatus}
+							setUsername={setUsername}
+							setRoles={setRoles}
 						/>
 					</Route>
 					<Route>
