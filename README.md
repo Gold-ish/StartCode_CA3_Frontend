@@ -5,8 +5,10 @@ This is the backend that is supposed to be used with this Frontend.
 https://github.com/Gold-ish/StartCode_CA3_Backend
 
 ## Getitng started
-
-- Download the zip-code from github to your computer
+- Make a new repository on GitHub.
+- Clone the repository to your computer.
+- Download this repository as a .zip file.
+- Move the project files from the .zip to your local repository, that you made in step 2.
 - Run `npm install` in the root of the folder
 - Run `npm start` to start the project
 - Run `code .` to open the project in Visual Studio Code
