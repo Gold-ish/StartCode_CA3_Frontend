@@ -30,6 +30,3 @@ function URLS() {
 	return { Login, User, Admin, AdminData, Dog, Cat };
 }
 export default new URLS();
-
-// const URL = URLS();
-// export default URL;
