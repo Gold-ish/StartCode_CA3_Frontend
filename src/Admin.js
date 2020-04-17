@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import facade from "./apiFacade";
+import URLS from "./Settings";
 
 export function Admin() {
 	return (
@@ -13,7 +14,7 @@ export function Admin() {
 function AdminFetch() {
 	const [dataFromServer, setDataFromServer] = useState("Loading...");
 	useEffect(() => {
-		facade.fetchDataAdmin().then((data) => setDataFromServer(data.msg));
+		facade.fetchData(URLS.Admin()).then((data) => setDataFromServer(data.msg));
 	}, []);
 	return (
 		<div>
@@ -26,7 +27,7 @@ function AdminFetch() {
 function Fetching() {
 	const [dataFromServer, setDataFromServer] = useState("Loading...");
 	useEffect(() => {
-		facade.fetchInfoData().then((data) => {
+		facade.fetchData(URLS.AdminData()).then((data) => {
 			let returnData = "";
 			for (let key in data) {
 				returnData += key + ": " + data[key] + " \n";

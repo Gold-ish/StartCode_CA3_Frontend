@@ -38,26 +38,6 @@ function apiFacade() {
 				console.log(res.role);
 			});
 	};
-	const fetchDataUser = () => {
-		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URLS.User(), options).then(handleHttpErrors);
-	};
-	const fetchDataAdmin = () => {
-		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL, options).then(handleHttpErrors);
-	};
-	const fetchInfoData = () => {
-		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL, options).then(handleHttpErrors);
-	};
-	const fetchDog = () => {
-		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL, options).then(handleHttpErrors);
-	};
-	const fetchCat = () => {
-		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL, options).then(handleHttpErrors);
-	};
 
 	const fetchData = (URL) => {
 		const options = makeOptions("GET", true); //True add's the token
@@ -87,11 +67,6 @@ function apiFacade() {
 		loggedIn,
 		login,
 		logout,
-		fetchDataUser,
-		fetchDataAdmin,
-		fetchInfoData,
-		fetchDog,
-		fetchCat,
 		fetchData,
 	};
 }

@@ -16,7 +16,7 @@ export function User() {
 function UserFetch() {
 	const [dataFromServer, setDataFromServer] = useState("Loading...");
 	useEffect(() => {
-		facade.fetchDataUser().then((data) => setDataFromServer(data.msg));
+		facade.fetchData(URLS.User()).then((data) => setDataFromServer(data.msg));
 	}, []);
 	return (
 		<div>
@@ -37,7 +37,7 @@ function FetchingDog() {
 function FetchingCat() {
 	const [dataFromServer, setDataFromServer] = useState("Loading...");
 	useEffect(() => {
-		facade.fetchCat().then((data) => setDataFromServer(data.file));
+		facade.fetchData(URLS.Cat()).then((data) => setDataFromServer(data.file));
 	}, []);
 	return <img src={dataFromServer} alt="cat" width="200" height="200" />;
 }
