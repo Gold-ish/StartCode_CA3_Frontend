@@ -1,4 +1,4 @@
-export function URLS() {
+function URLS() {
 	function Login() {
 		const URL = "https://host.hangovergaming.dk/security/api/login";
 		return URL;
@@ -29,6 +29,7 @@ export function URLS() {
 
 	return { Login, User, Admin, AdminData, Dog, Cat };
 }
+export default new URLS();
 
 // const URL = URLS();
 // export default URL;

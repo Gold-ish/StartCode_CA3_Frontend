@@ -1,4 +1,4 @@
-import { URLS } from "./Settings";
+import URLS from "./Settings";
 
 function handleHttpErrors(res) {
 	if (!res.ok) {
@@ -40,7 +40,7 @@ function apiFacade() {
 	};
 	const fetchDataUser = () => {
 		const options = makeOptions("GET", true); //True add's the token
-		return fetch(URL.User(), options).then(handleHttpErrors);
+		return fetch(URLS.User(), options).then(handleHttpErrors);
 	};
 	const fetchDataAdmin = () => {
 		const options = makeOptions("GET", true); //True add's the token
